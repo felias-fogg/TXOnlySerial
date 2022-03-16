@@ -1,0 +1,16 @@
+{
+    "name": "TXOnlySerial",
+    "version": "1.0.0",
+    "keywords": "Communication",
+    "description": "SoftwareSerial with output line only",
+    "repository":
+    {
+	"type": "git",
+	"url": "https://github.com/felias-fogg/TXOnlySerial.git"
+    },
+    "frameworks": "arduino",
+    "platforms": 
+    [
+	"atmelavr",
+    ]
+}

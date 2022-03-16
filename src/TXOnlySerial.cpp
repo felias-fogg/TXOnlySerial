@@ -1,5 +1,8 @@
 /*
-TXOnlySerial.cpp (derived from SoftSerial.cpp) - 
+TXOnlySerial.cpp (derived from SoftSerial.cpp)  
+- it can only output over a serial line
+- very useful when debugging
+
 Multi-instance software serial TX only library for Arduino/Wiring
 -- Tuning, circular buffer, derivation from class Print/Stream,
    multi-instance support, porting to 8MHz processors,
@@ -48,7 +51,6 @@ inline void TXOnlySerial::tunedDelay(uint16_t delay) {
 //
 TXOnlySerial::TXOnlySerial(uint8_t transmitPin, bool inverse_logic /* = false */) : 
   _tx_delay(0),
-  _buffer_overflow(false),
   _inverse_logic(inverse_logic)
 {
   setTX(transmitPin);
@@ -88,21 +90,11 @@ uint16_t TXOnlySerial::subtract_cap(uint16_t num, uint16_t sub) {
 
 void TXOnlySerial::begin(long speed)
 {
-  // Precalculate the various delays, in number of 4-cycle delays
-  uint16_t bit_delay = (F_CPU / speed) / 4;
-
-  // 12 (gcc 4.8.2) or 13 (gcc 4.3.2) cycles from start bit to first bit,
-  // 15 (gcc 4.8.2) or 16 (gcc 4.3.2) cycles between bits,
-  // 12 (gcc 4.8.2) or 14 (gcc 4.3.2) cycles from last bit to stop bit
-  // These are all close enough to just use 15 cycles, since the inter-bit
-  // timings are the most critical (deviations stack 8 times)
-  _tx_delay = subtract_cap(bit_delay, 15 / 4);
-
+  _tx_delay = subtract_cap((F_CPU / speed) / 4, 15 / 4);
 }
 
 void TXOnlySerial::end()
 {
-
 }
 
 

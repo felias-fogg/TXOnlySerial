@@ -4,9 +4,9 @@
  This example code is in the public domain.
 
  */
-#define SERIALOUT 4
-//#define TXONLY
-#define SWSERIAL
+#define SERIALOUT 3
+#define TXONLY
+// #define SWSERIAL
 
 
 
@@ -26,7 +26,7 @@ SoftwareSerial mySerial(SERIALOUT+1, SERIALOUT); // TX
 
 void setup() {
 #if defined(TXONLY) || defined(SWSERIAL)
-  mySerial.begin(19200);
+  mySerial.begin(1200);
   mySerial.println("Hello, world?");
   mySerial.println(42,HEX);
 #endif

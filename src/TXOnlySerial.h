@@ -35,10 +35,6 @@ Latest version could be found here: https://github.com/felias-fogg
 * Definitions
 ******************************************************************************/
 
-#ifndef GCC_VERSION
-#define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
-#endif
-
 class TXOnlySerial : public Stream
 {
 private:
@@ -49,7 +45,6 @@ private:
   // Expressed as 4-cycle delays (must never be 0!)
   uint16_t _tx_delay;
 
-  uint16_t _buffer_overflow:1;
   uint16_t _inverse_logic:1;
 
 
@@ -68,7 +63,6 @@ public:
   ~TXOnlySerial();
   void begin(long speed);
   void end();
-  bool overflow() { bool ret = _buffer_overflow; if (ret) _buffer_overflow = false; return ret; }
 
   int peek();
   virtual int read();
@@ -81,14 +75,4 @@ public:
 
 };
 
-// Arduino 0012 workaround
-#if ARDUINO <= 12
-#undef int
-#undef char
-#undef long
-#undef byte
-#undef float
-#undef abs
-#undef round
-#endif
 #endif
