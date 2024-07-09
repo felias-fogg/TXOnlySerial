@@ -2,7 +2,6 @@ TXOnlySerial
 ========
 
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPLv3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
-[![Installation instructions](https://www.ardu-badge.com/badge/TXOnlySerial.svg?)](https://www.ardu-badge.com/TXOnlySerial)
 [![Commits since latest](https://img.shields.io/github/commits-since/felias-fogg/TXOnlySerial/latest?include_prereleases)](https://github.com/felias-fogg/TXOnlySerial/commits/master)
 ![Hit Counter](https://visitor-badge.laobi.icu/badge?page_id=felias-fogg_TXOnlySerial)
 [![Build Status](https://github.com/felias-fogg/TXOnlySerial/workflows/LibraryBuild/badge.svg)](https://github.com/felias-fogg/TXOnlySerial/actions)
